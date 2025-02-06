@@ -68,7 +68,7 @@ def page2():
         category=st.selectbox('select category',categories)
         st.write(category)
         years=list(df['transaction date'].dt.year.unique())
-        year=st.select_slider('select year',years)
+        year=st.select_slider('year',years)
         st.write(year)
         df_temp = df[(df['category'] == category) & (df['transaction date'].dt.year == year)]
         st.plotly_chart(px.histogram(df_temp , x='transaction date' , y='total spent' , color_discrete_sequence=['navy'] , text_auto=True ))
