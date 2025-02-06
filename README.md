@@ -3,3 +3,4 @@
 
 source dataset: https://www.kaggle.com/datasets/ahmedmohamed2003/retail-store-sales-dirty-for-data-cleaning
 to view: https://epsilonretail-store-midproject.streamlit.app/
+EpsilonAI:https://epsilonretail-store-midproject.streamlit.app/
