@@ -2,6 +2,7 @@ import streamlit as st
 import pandas as pd 
 import plotly.express as px 
 from plotly.subplots import make_subplots
+import statsmodels.api as sm
 
 #set page layout
 st.set_page_config(layout='wide')
@@ -53,13 +54,8 @@ def page2():
     
     with tab2:
         st.header('Sales by category and the place of purchase')
-        categories=list(df['category'].unique())
-        category=st.selectbox('select cat',categories)
-        st.write(category)
-        locations=df['location'].unique()
-        location=st.radio('Select purchase location',locations)
-        st.write(location)
-        st.plotly_chart(px.histogram(df_temp , x='category' , y = 'total spent' , color='location', text_auto=True ,title='Sales by category' 
+
+        st.plotly_chart(px.histogram(df , x='category' , y = 'total spent' , color='location', text_auto=True ,title='Sales by category' 
              ,color_discrete_sequence=['navy','gray'] ,barmode='group'))
     
     with tab3:
@@ -68,7 +64,7 @@ def page2():
         category=st.selectbox('select category',categories)
         st.write(category)
         years=list(df['transaction date'].dt.year.unique())
-        year=st.select_slider('year',years)
+        year=st.select_slider(' year',years)
         st.write(year)
         df_temp = df[(df['category'] == category) & (df['transaction date'].dt.year == year)]
         st.plotly_chart(px.histogram(df_temp , x='transaction date' , y='total spent' , color_discrete_sequence=['navy'] , text_auto=True ))
