@@ -54,7 +54,7 @@ def page2():
     with tab2:
         st.header('Sales by category and the place of purchase')
         categories=list(df['category'].unique())
-        category=st.selectbox('select category',categories)
+        category=st.selectbox('select cat',categories)
         st.write(category)
         locations=df['location'].unique()
         location=st.radio('Select purchase location',locations)
